@@ -34,8 +34,8 @@ html {
     scroll-behavior: smooth;
     font-size: 16px;
     background: var(--bg-dark);
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow-x: hidden;  /* ✅ Add karo */
+    overflow-y: auto;    /* ✅ Add karo */
 }
 
 body {
@@ -44,21 +44,19 @@ body {
     background: var(--bg-dark);
     line-height: 1.6;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: auto;    /* ✅ Add karo */
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
-    width: 100%;
-    max-width: 100vw;
+    width: 100%;         /* ✅ Add karo */
+    max-width: 100vw;    /* ✅ Add karo */
 }
 
-/* ✅ FIX: Container padding badhaya */
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 40px; /* 24px se 40px */
-    overflow-x: hidden;
-    width: 100%;
-    box-sizing: border-box;
+    padding: 0 24px;
+    overflow-x: hidden; /* Ye add karo */
+    width: 100%; /* Ye add karo */
 }
 
 /* ============================================
@@ -175,6 +173,8 @@ body {
     transition: var(--transition);
 }
 
+/* UI FIX: pehle hamburger -> X animation sirf inline JS styles se hoti thi.
+   Ab .active class ke through CSS me clean animation hai. */
 .mobile-toggle.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
 }
@@ -188,6 +188,7 @@ body {
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
+/* Dark overlay jo menu open hone par background ko dim karta hai */
 .nav-overlay {
     display: none;
     position: fixed;
@@ -204,6 +205,7 @@ body {
     opacity: 1;
 }
 
+/* Menu open hone par background scroll lock */
 body.menu-open {
     overflow: hidden;
 }
@@ -218,11 +220,12 @@ body.menu-open {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    overflow-x: hidden;  /* ✅ Change karo */
+    overflow-y: visible; /* ✅ Add karo */
     background: var(--bg-dark);
     padding: 120px 0 80px;
-    width: 100%;
-    max-width: 100vw;
+    width: 100%;         /* ✅ Add karo */
+    max-width: 100vw;    /* ✅ Add karo */
 }
 
 .hero-bg {
@@ -241,6 +244,7 @@ body.menu-open {
     filter: blur(80px);
     opacity: 0.4;
     animation: float 20s infinite ease-in-out;
+    /* Orbs ko contain karo */
     max-width: 100%;
     max-height: 100%;
 }
@@ -252,6 +256,9 @@ body.menu-open {
     top: -200px;
     right: -100px;
     animation-delay: 0s;
+    /* Mobile me size kam karo */
+    max-width: 400px;
+    max-height: 400px;
 }
 
 .orb-2 {
@@ -261,6 +268,9 @@ body.menu-open {
     bottom: -150px;
     left: -100px;
     animation-delay: -5s;
+    /* Mobile me size kam karo */
+    max-width: 400px;
+    max-height: 400px;
 }
 
 .orb-3 {
@@ -272,6 +282,9 @@ body.menu-open {
     transform: translate(-50%, -50%);
     animation-delay: -10s;
     opacity: 0.2;
+    /* Mobile me size kam karo */
+    max-width: 300px;
+    max-height: 300px;
 }
 
 .grid-overlay {
@@ -512,9 +525,8 @@ body.menu-open {
    PROBLEM SECTION
    ============================================ */
 
-/* ✅ FIX: Padding badhaya */
 .problem {
-    padding: 120px 0;
+    padding: 100px 0;
 }
 
 .problem-grid {
@@ -590,9 +602,8 @@ body.menu-open {
    SOLUTION SECTION
    ============================================ */
 
-/* ✅ FIX: Padding badhaya */
 .solution {
-    padding: 120px 0;
+    padding: 100px 0;
     background: linear-gradient(180deg, var(--bg) 0%, #f8fafc 100%);
     color: var(--primary);
 }
@@ -650,16 +661,18 @@ body.menu-open {
     flex-shrink: 0;
 }
 
-/* ✅ FIX: Solution Visual Stack - Overlap Fix */
+/* Solution Visual Stack */
 .solution-visual {
     position: relative;
-    min-height: 600px;
+    height: 500px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
     align-items: center;
     justify-content: center;
-    padding: 40px 0;
+    overflow: hidden;    
+    width: 100%;         
+    max-width: 100%;     
 }
 
 .stack-card {
@@ -667,79 +680,75 @@ body.menu-open {
     border-radius: 20px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
     padding: 24px;
-    width: 100%;
-    max-width: 350px;
+    width: 280px;
     border: 1px solid rgba(0, 0, 0, 0.05);
     animation: float-card 6s infinite ease-in-out;
-    position: relative;
 }
-
-/* ✅ FIX: Desktop par grid layout */
+/* Desktop par hi absolute positioning rakho */
 @media (min-width: 1025px) {
     .solution-visual {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto auto;
-        gap: 20px;
-        min-height: 500px;
-        align-items: center;
+        display: block;
+        height: 500px;
     }
     
     .stack-card {
-        position: relative;
-        width: 100%;
-        max-width: 300px;
+        position: absolute;
     }
     
     .card-1 {
-        grid-column: 1;
-        grid-row: 1;
+        top: 0;
+        left: 0;
+        z-index: 3;
         animation-delay: 0s;
     }
     
     .card-2 {
-        grid-column: 2;
-        grid-row: 1;
+        top: 120px;
+        right: 0;
+        z-index: 2;
         animation-delay: -2s;
     }
     
     .card-3 {
-        grid-column: 1 / 3;
-        grid-row: 2;
-        justify-self: center;
+        bottom: 0;
+        left: 60px;
+        z-index: 1;
         animation-delay: -4s;
     }
 }
 
-/* ✅ FIX: Tablet par 2 columns */
+/* Tablet par thoda adjust karo */
 @media (max-width: 1024px) and (min-width: 769px) {
     .solution-visual {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        min-height: 450px;
+        height: 400px;
     }
     
     .stack-card {
-        width: 100%;
-        max-width: 280px;
+        width: 240px;
     }
-    
-    .card-1 {
-        grid-column: 1;
-        grid-row: 1;
-    }
-    
-    .card-2 {
-        grid-column: 2;
-        grid-row: 1;
-    }
-    
-    .card-3 {
-        grid-column: 1 / 3;
-        grid-row: 2;
-        justify-self: center;
-    }
+}
+
+.card-1 {
+    top: 0;
+    left: 0;
+    z-index: 3;
+    animation: float-card 6s infinite ease-in-out;
+}
+
+.card-2 {
+    top: 120px;
+    right: 0;
+    z-index: 2;
+    animation: float-card 6s infinite ease-in-out;
+    animation-delay: -2s;
+}
+
+.card-3 {
+    bottom: 0;
+    left: 60px;
+    z-index: 1;
+    animation: float-card 6s infinite ease-in-out;
+    animation-delay: -4s;
 }
 
 .stack-header {
@@ -866,9 +875,8 @@ body.menu-open {
    WHY US SECTION
    ============================================ */
 
-/* ✅ FIX: Padding badhaya */
 .why-us {
-    padding: 120px 0;
+    padding: 100px 0;
 }
 
 .features-grid {
@@ -922,9 +930,8 @@ body.menu-open {
    SERVICES SECTION
    ============================================ */
 
-/* ✅ FIX: Padding badhaya */
 .services {
-    padding: 120px 0;
+    padding: 100px 0;
     background: linear-gradient(180deg, #f8fafc 0%, var(--bg) 100%);
     color: var(--primary);
 }
@@ -1039,9 +1046,8 @@ body.menu-open {
    PRICING SECTION
    ============================================ */
 
-/* ✅ FIX: Padding badhaya */
 .pricing {
-    padding: 120px 0;
+    padding: 100px 0;
 }
 
 .pricing-grid {
@@ -1177,9 +1183,8 @@ body.menu-open {
    STEPS SECTION
    ============================================ */
 
-/* ✅ FIX: Padding badhaya */
 .steps {
-    padding: 120px 0;
+    padding: 100px 0;
     background: linear-gradient(180deg, var(--bg) 0%, #f8fafc 100%);
     color: var(--primary);
 }
@@ -1252,9 +1257,8 @@ body.menu-open {
    CONTACT SECTION
    ============================================ */
 
-/* ✅ FIX: Padding badhaya */
 .contact {
-    padding: 120px 0;
+    padding: 100px 0;
 }
 
 .contact-layout {
@@ -1364,6 +1368,7 @@ body.menu-open {
     border-color: rgba(245, 158, 11, 0.3);
 }
 
+/* Contact Form */
 .contact-form-wrapper {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -1547,22 +1552,29 @@ body.menu-open {
    ============================================ */
 
 @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translate(0, 0) scale(1);
     }
+
     33% {
         transform: translate(30px, -30px) scale(1.1);
     }
+
     66% {
         transform: translate(-20px, 20px) scale(0.9);
     }
 }
 
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
         transform: scale(1);
     }
+
     50% {
         opacity: 0.5;
         transform: scale(1.2);
@@ -1570,12 +1582,19 @@ body.menu-open {
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateX(-50%) translateY(0);
     }
+
     40% {
         transform: translateX(-50%) translateY(-10px);
     }
+
     60% {
         transform: translateX(-50%) translateY(-5px);
     }
@@ -1586,6 +1605,7 @@ body.menu-open {
         opacity: 1;
         transform: translateX(-50%) translateY(0);
     }
+
     100% {
         opacity: 0;
         transform: translateX(-50%) translateY(12px);
@@ -1593,14 +1613,18 @@ body.menu-open {
 }
 
 @keyframes float-card {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-10px);
     }
 }
 
+/* Scroll Reveal Classes */
 .reveal-up,
 .reveal-left,
 .reveal-right {
@@ -1625,28 +1649,11 @@ body.menu-open {
 }
 
 /* ============================================
-   GLOBAL SCROLL FIX
-   ============================================ */
-
-.hero,
-.problem,
-.solution,
-.why-us,
-.services,
-.pricing,
-.steps,
-.contact,
-.footer {
-    overflow-x: hidden;
-    max-width: 100%;
-    position: relative;
-}
-
-/* ============================================
    RESPONSIVE
    ============================================ */
 
 @media (max-width: 1024px) {
+
     .solution-layout,
     .contact-layout {
         grid-template-columns: 1fr;
@@ -1654,7 +1661,12 @@ body.menu-open {
     }
 
     .solution-visual {
+        height: 400px;
         order: -1;
+    }
+
+    .stack-card {
+        width: 240px;
     }
 
     .pricing-grid {
@@ -1674,22 +1686,7 @@ body.menu-open {
 }
 
 @media (max-width: 768px) {
-    /* ✅ FIX: Mobile padding */
-    .container {
-        padding: 0 20px;
-    }
-    
-    /* ✅ FIX: Mobile sections padding */
-    .problem,
-    .solution,
-    .why-us,
-    .services,
-    .pricing,
-    .steps,
-    .contact {
-        padding: 80px 0;
-    }
-    
+    /* Gradient orbs ko chhota karo */
     .orb-1,
     .orb-2 {
         max-width: 250px;
@@ -1793,20 +1790,52 @@ body.menu-open {
         max-width: 100%;
     }
 
-    /* ✅ FIX: Mobile cards properly arranged */
-    .solution-visual {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 20px !important;
-        min-height: auto !important;
-        padding: 20px 0 !important;
+    .stack-card {
+        width: 100%;
+        max-width: 300px;
+        padding: 16px;
+        position: relative !important; /* Important! */
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
     }
     
-    .stack-card {
-        width: 100% !important;
-        max-width: 100% !important;
-        position: relative !important;
+    .solution-visual {
+        height: auto !important; /* Important! */
+        min-height: 350px;
+        gap: 16px;
     }
+}
+/* ============================================
+   GLOBAL SCROLL FIX
+   ============================================ */
+
+/* Sabhi sections ko constrain karo */
+.hero,
+.problem,
+.solution,
+.why-us,
+.services,
+.pricing,
+.steps,
+.contact,
+.footer {
+    overflow-x: hidden;
+    max-width: 100%;
+    position: relative;
+}
+
+/* Container ko bhi fix karo */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    overflow-x: hidden;
+    width: 100%;
+    /* Container ko constrain karo */
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 @media (max-width: 480px) {
