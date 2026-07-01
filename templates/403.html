@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Denied | A Account Plus</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .error-wrap {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text);
+            background: var(--bg-dark);
+            padding: 24px;
+        }
+
+        .error-wrap h1 {
+            font-size: 3rem;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .error-wrap p {
+            color: var(--text-muted);
+        }
+
+        .error-wrap a {
+            margin-top: 24px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="error-wrap">
+        <h1>403</h1>
+        <p>You don't have permission to view this page.</p>
+        <a href="/">&larr; Back to Home</a>
+    </div>
+</body>
+
+</html>

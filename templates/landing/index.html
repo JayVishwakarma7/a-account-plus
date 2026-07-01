@@ -1,0 +1,669 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Account Plus | Petrol Pump Accounting Experts</title>
+    <meta name="description"
+        content="100% online centralized accounting built exclusively for petrol pump businesses. 40+ years experience.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">A</span>
+                <span class="logo-text">Account<span class="logo-plus">Plus</span></span>
+            </a>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false"
+                aria-controls="navMenu">
+                <span></span><span></span><span></span>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#problem" class="nav-link">The Problem</a></li>
+                <li><a href="#solution" class="nav-link">Our Solution</a></li>
+                <li><a href="#why-us" class="nav-link">Why Us</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#pricing" class="nav-link">Pricing</a></li>
+                <li><a href="#contact" class="nav-link btn-nav">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Overlay backdrop jo hamburger menu open hone par dikhta hai -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+            <div class="grid-overlay"></div>
+        </div>
+
+        <div class="container hero-content">
+            <div class="hero-badge reveal-up">
+                <span class="badge-pulse"></span>
+                <span>Petrol Pump Accounting Specialists</span>
+            </div>
+
+            <h1 class="hero-title reveal-up">
+                Your Finances,<br>
+                <span class="gradient-text">Fully in Control.</span>
+            </h1>
+
+            <p class="hero-subtitle reveal-up">
+                100% online, centralized accounting built exclusively for petrol pump businesses.
+                Compliance, clarity, and savings — in one place.
+            </p>
+
+            <div class="hero-cta reveal-up">
+                <a href="#contact" class="btn btn-primary">
+                    <span>Book Free Consultation</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+                <a href="#services" class="btn btn-secondary">Explore Services</a>
+            </div>
+
+            <div class="hero-stats reveal-up">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="40">0</div>
+                    <div class="stat-suffix">+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="22">0</div>
+                    <div class="stat-suffix">%</div>
+                    <div class="stat-label">Average Savings</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-suffix">%</div>
+                    <div class="stat-label">Online Service</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="scroll-text">Scroll to explore</div>
+        </div>
+    </section>
+
+    <!-- The Problem -->
+    <section class="problem section-dark" id="problem">
+        <div class="container">
+            <div class="section-header reveal-up">
+                <span class="section-tag">The Challenge</span>
+                <h2 class="section-title">What's Holding Your Business Back?</h2>
+                <p class="section-desc">Petrol pump owners face unique accounting complexities that generic consultants
+                    simply don't understand.</p>
+            </div>
+
+            <div class="problem-grid">
+                <div class="problem-card reveal-up" data-delay="0">
+                    <div class="problem-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 8v4M12 16h.01" />
+                        </svg>
+                    </div>
+                    <h3>Multiple Consultants</h3>
+                    <p>Tired of juggling separate consultants for GST, TDS, MVAT, Tax Audits, and Bookkeeping?</p>
+                    <div class="card-glow"></div>
+                </div>
+
+                <div class="problem-card reveal-up" data-delay="100">
+                    <div class="problem-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path
+                                d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+                        </svg>
+                    </div>
+                    <h3>Missed Deadlines</h3>
+                    <p>Facing penalties from missed compliance deadlines and fragmented follow-ups?</p>
+                    <div class="card-glow"></div>
+                </div>
+
+                <div class="problem-card reveal-up" data-delay="200">
+                    <div class="problem-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M3 3v18h18" />
+                            <path d="M7 16l4-4 4 4 6-6" />
+                        </svg>
+                    </div>
+                    <h3>Unclear Financials</h3>
+                    <p>Struggling with opaque financial reporting and no real-time view of your business?</p>
+                    <div class="card-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Solution -->
+    <section class="solution" id="solution">
+        <div class="container">
+            <div class="solution-layout">
+                <div class="solution-content reveal-left">
+                    <span class="section-tag">Our Solution</span>
+                    <h2 class="section-title">Centralized Accounting Built for Petrol Pumps</h2>
+                    <p class="solution-text">
+                        With over <strong>40 years</strong> of industry-specific experience, we simplify and automate
+                        every compliance need your business has. No more scattered documents or last-minute panic.
+                    </p>
+
+                    <ul class="solution-features">
+                        <li>
+                            <span class="check-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </span>
+                            <span>Single dashboard for all compliance</span>
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </span>
+                            <span>Automated deadline tracking</span>
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </span>
+                            <span>Real-time financial reporting</span>
+                        </li>
+                        <li>
+                            <span class="check-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </span>
+                            <span>Industry-specific shortage analysis</span>
+                        </li>
+                    </ul>
+
+                    <a href="#contact" class="btn btn-primary">Learn More</a>
+                </div>
+
+                <div class="solution-visual reveal-right">
+                    <div class="solution-card-stack">
+                        <div class="stack-card card-1">
+                            <div class="stack-header">
+                                <div class="stack-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <span class="stack-title">Daily MIS Report</span>
+                            </div>
+                            <div class="stack-body">
+                                <div class="stack-row"><span>Fuel Sales</span><span>₹4,25,000</span></div>
+                                <div class="stack-row"><span>Stock Level</span><span>85%</span></div>
+                                <div class="stack-row"><span>Shortage</span><span class="text-success">0.02%</span>
+                                </div>
+                                <div class="stack-chart">
+                                    <div class="chart-bar" style="--h: 60%"></div>
+                                    <div class="chart-bar" style="--h: 85%"></div>
+                                    <div class="chart-bar" style="--h: 45%"></div>
+                                    <div class="chart-bar" style="--h: 90%"></div>
+                                    <div class="chart-bar" style="--h: 70%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stack-card card-2">
+                            <div class="stack-badge">GST Filed</div>
+                            <div class="stack-body center">
+                                <div class="success-ring">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.5">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                </div>
+                                <p>GSTR-3B Submitted</p>
+                                <small>15th June 2024</small>
+                            </div>
+                        </div>
+                        <div class="stack-card card-3">
+                            <div class="stack-header">
+                                <span class="stack-title">Tax Savings</span>
+                            </div>
+                            <div class="stack-body">
+                                <div class="savings-ring">
+                                    <span class="savings-value">22%</span>
+                                    <span class="savings-label">Saved</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us section-dark" id="why-us">
+        <div class="container">
+            <div class="section-header reveal-up">
+                <span class="section-tag">Why Choose Us</span>
+                <h2 class="section-title">Built Different, For a Reason</h2>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card reveal-up" data-delay="0">
+                    <div class="feature-number">01</div>
+                    <h3>One-Stop Control</h3>
+                    <p>No more juggling multiple consultants. Everything managed from a single point.</p>
+                </div>
+
+                <div class="feature-card reveal-up" data-delay="100">
+                    <div class="feature-number">02</div>
+                    <h3>Smart Savings</h3>
+                    <p>Save <strong>20–22%</strong> yearly compared to traditional accounting methods.</p>
+                </div>
+
+                <div class="feature-card reveal-up" data-delay="200">
+                    <div class="feature-number">03</div>
+                    <h3>Expert Guidance</h3>
+                    <p>Profit reviews, tax strategies, and shortage analysis by industry specialists.</p>
+                </div>
+
+                <div class="feature-card reveal-up" data-delay="0">
+                    <div class="feature-number">04</div>
+                    <h3>360° Compliance</h3>
+                    <p>GST, TDS, MVAT, Tax Audit — all handled with precision and on time.</p>
+                </div>
+
+                <div class="feature-card reveal-up" data-delay="100">
+                    <div class="feature-number">05</div>
+                    <h3>Real-Time Clarity</h3>
+                    <p>Daily reports and automated filings for complete financial transparency.</p>
+                </div>
+
+                <div class="feature-card reveal-up" data-delay="200">
+                    <div class="feature-number">06</div>
+                    <h3>Dedicated Support</h3>
+                    <p>Your own account manager who understands petrol pump operations inside out.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header reveal-up">
+                <span class="section-tag">Our Services</span>
+                <h2 class="section-title">Everything You Need, Under One Roof</h2>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card reveal-up" data-delay="0">
+                    <div class="service-icon icon-gst">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                        </svg>
+                    </div>
+                    <h3>GST Filings</h3>
+                    <p>GSTR-1, 3B, 9, 9C, E-Invoicing and complete GST compliance management.</p>
+                    <a href="#contact" class="service-link">Get Started →</a>
+                </div>
+
+                <div class="service-card reveal-up" data-delay="100">
+                    <div class="service-icon icon-mvat">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <rect x="2" y="3" width="20" height="14" rx="2" />
+                            <line x1="8" y1="21" x2="16" y2="21" />
+                            <line x1="12" y1="17" x2="12" y2="21" />
+                        </svg>
+                    </div>
+                    <h3>MVAT Returns & Audit</h3>
+                    <p>Comprehensive MVAT returns filing and audit support for full compliance.</p>
+                    <a href="#contact" class="service-link">Get Started →</a>
+                </div>
+
+                <div class="service-card reveal-up" data-delay="200">
+                    <div class="service-icon icon-reports">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M3 3v18h18" />
+                            <path d="M18 17V9" />
+                            <path d="M13 17V5" />
+                            <path d="M8 17v-3" />
+                        </svg>
+                    </div>
+                    <h3>Daily / Monthly Reports</h3>
+                    <p>MIS, Fuel Stock, Shift Analysis, and comprehensive business reporting.</p>
+                    <a href="#contact" class="service-link">Get Started →</a>
+                </div>
+
+                <div class="service-card reveal-up" data-delay="0">
+                    <div class="service-icon icon-tds">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                        </svg>
+                    </div>
+                    <h3>TDS Compliance & Filing</h3>
+                    <p>End-to-end TDS compliance, timely filings, and documentation management.</p>
+                    <a href="#contact" class="service-link">Get Started →</a>
+                </div>
+
+                <div class="service-card reveal-up" data-delay="100">
+                    <div class="service-icon icon-accounts">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <rect x="1" y="4" width="22" height="16" rx="2" />
+                            <line x1="1" y1="10" x2="23" y2="10" />
+                        </svg>
+                    </div>
+                    <h3>Finalization of Accounts</h3>
+                    <p>P&L, Balance Sheet, Tax Audit, and complete financial statement preparation.</p>
+                    <a href="#contact" class="service-link">Get Started →</a>
+                </div>
+
+                <div class="service-card reveal-up" data-delay="200">
+                    <div class="service-icon icon-billing">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+                            <polyline points="13 2 13 9 20 9" />
+                        </svg>
+                    </div>
+                    <h3>Smart Billing</h3>
+                    <p>PDF and E-invoice generation for streamlined and error-free billing.</p>
+                    <a href="#contact" class="service-link">Get Started →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing section-dark" id="pricing">
+        <div class="container">
+            <div class="section-header reveal-up">
+                <span class="section-tag">Pricing & Savings</span>
+                <h2 class="section-title">Transparent Pricing, Real Savings</h2>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card traditional reveal-left">
+                    <div class="pricing-header">
+                        <span class="pricing-label">Traditional Consultant</span>
+                        <div class="pricing-price">
+                            <span class="currency">₹</span>
+                            <span class="amount">5.8</span>
+                            <span class="unit">Lakhs<span>/year</span></span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li class="cross">Multiple consultants to manage</li>
+                        <li class="cross">Fragmented, siloed services</li>
+                        <li class="cross">No real-time financial insights</li>
+                        <li class="cross">Risk of missed deadlines</li>
+                        <li class="cross">No dedicated support</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card recommended reveal-right">
+                    <div class="pricing-badge">Recommended</div>
+                    <div class="pricing-header">
+                        <span class="pricing-label">A Account Plus</span>
+                        <div class="pricing-price">
+                            <span class="currency">₹</span>
+                            <span class="amount">4.25</span>
+                            <span class="unit">Lakhs<span>/year</span></span>
+                        </div>
+                        <div class="pricing-discount">5% Instant Discount Included</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li class="check">One-stop solution for all needs</li>
+                        <li class="check">100% online, zero travel</li>
+                        <li class="check">Daily reports and real-time insights</li>
+                        <li class="check">Expert industry guidance</li>
+                        <li class="check">Dedicated account manager</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary btn-full">Save 20–22% Annually</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps -->
+    <section class="steps" id="steps">
+        <div class="container">
+            <div class="section-header reveal-up">
+                <span class="section-tag">Get Started</span>
+                <h2 class="section-title">Begin in 3 Simple Steps</h2>
+            </div>
+
+            <div class="steps-timeline">
+                <div class="timeline-line"></div>
+
+                <div class="step-item reveal-up" data-delay="0">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Call or WhatsApp Us</h3>
+                        <p>Reach out to our team for a quick initial discussion about your needs.</p>
+                    </div>
+                </div>
+
+                <div class="step-item reveal-up" data-delay="150">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Book Free Consultation</h3>
+                        <p>Schedule a detailed session with one of our petrol pump accounting experts.</p>
+                    </div>
+                </div>
+
+                <div class="step-item reveal-up" data-delay="300">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Onboard in 24 Hours</h3>
+                        <p>Quick setup. Start experiencing seamless compliance from day one.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact section-dark" id="contact">
+        <div class="container">
+            <div class="contact-layout">
+                <div class="contact-info reveal-left">
+                    <span class="section-tag">Contact Us</span>
+                    <h2 class="section-title">Get in Touch</h2>
+                    <p class="contact-desc">Ready to take control of your petrol pump finances? We're here to help.</p>
+
+                    <div class="contact-methods">
+                        <a href="tel:+919820680618" class="contact-method">
+                            <div class="method-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                                </svg>
+                            </div>
+                            <div class="method-details">
+                                <span class="method-label">Phone</span>
+                                <span class="method-value">+91 98206 80618</span>
+                                <span class="method-value">+91 93726 79016</span>
+                            </div>
+                        </a>
+
+                        <a href="mailto:aplus7766@gmail.com" class="contact-method">
+                            <div class="method-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                    <polyline points="22,6 12,13 2,6" />
+                                </svg>
+                            </div>
+                            <div class="method-details">
+                                <span class="method-label">Email</span>
+                                <span class="method-value">aplus7766@gmail.com</span>
+                            </div>
+                        </a>
+
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                            </div>
+                            <div class="method-details">
+                                <span class="method-label">Location</span>
+                                <span class="method-value">Mumbai, India</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quick-links">
+                        <h4>Quick Links</h4>
+                        <div class="links-group">
+                            <a href="#services">Services</a>
+                            <a href="#pricing">Pricing</a>
+                            <a href="#services">GST Filings</a>
+                            <a href="#services">TDS Compliance</a>
+                            <a href="#services">MVAT Returns</a>
+                            <a href="#services">Account Finalization</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper reveal-right">
+                    <form class="contact-form" id="contactForm">
+                        {% csrf_token %}
+                        <h3>Send Us a Message</h3>
+
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder=" " required>
+                            <label for="name">Your Name</label>
+                            <span class="form-line"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder=" " required>
+                            <label for="email">Email Address</label>
+                            <span class="form-line"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder=" " required>
+                            <label for="phone">Phone Number</label>
+                            <span class="form-line"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="4" placeholder=" " required></textarea>
+                            <label for="message">Tell us about your petrol pump business...</label>
+                            <span class="form-line"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+                            <span>Send Message</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13" />
+                                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                            </svg>
+                        </button>
+
+                        <div class="form-status" id="formStatus"></div>
+
+                        <p class="form-note">We typically respond within 2 business hours.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <span class="logo-icon">A</span>
+                        <span class="logo-text">Account<span class="logo-plus">Plus</span></span>
+                    </a>
+                    <p>Your one-stop petrol pump accounting solution, backed by over 40 years of industry-specific
+                        experience. 100% online, always compliant.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">GST Filings</a></li>
+                        <li><a href="#services">TDS Compliance</a></li>
+                        <li><a href="#services">MVAT Returns</a></li>
+                        <li><a href="#services">Account Finalization</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+919820680618">+91 98206 80618</a></li>
+                        <li><a href="tel:+919372679016">+91 93726 79016</a></li>
+                        <li><a href="mailto:aplus7766@gmail.com">aplus7766@gmail.com</a></li>
+                        <li>Mumbai, India</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2024 A Account Plus. All rights reserved. Designed for petrol pump businesses.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

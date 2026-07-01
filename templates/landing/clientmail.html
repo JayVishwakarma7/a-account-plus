@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Submissions | A Account Plus</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .admin-wrap {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 0 24px;
+            color: var(--text);
+        }
+
+        .admin-wrap h1 {
+            font-size: 1.75rem;
+            margin-bottom: 24px;
+        }
+
+        .submission-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .submission-table th,
+        .submission-table td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+
+        .submission-table th {
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+
+        .submission-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .empty-state {
+            color: var(--text-muted);
+            padding: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body style="background: var(--bg-dark);">
+    <div class="admin-wrap">
+        <h1>Contact Form Submissions</h1>
+
+        {% if submissions %}
+        <table class="submission-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Message</th>
+                    <th>Submitted</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in submissions %}
+                <tr>
+                    <td>{{ s.name }}</td>
+                    <td>{{ s.email }}</td>
+                    <td>{{ s.phone|default:"—" }}</td>
+                    <td>{{ s.message }}</td>
+                    <td>{{ s.submitted_at|date:"d M Y, H:i" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="empty-state">No submissions yet.</div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
