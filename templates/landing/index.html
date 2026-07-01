@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script>document.documentElement.classList.add('js');</script>
 </head>
 
 <body>
@@ -99,12 +100,12 @@
             </div>
         </div>
 
-        <div class="scroll-indicator">
+        <!-- <div class="scroll-indicator">
             <div class="mouse">
                 <div class="wheel"></div>
             </div>
-            <div class="scroll-text">Scroll to explore</div>
-        </div>
+            <div class="scroll-text"></div>
+        </div> -->
     </section>
 
     <!-- The Problem -->
@@ -604,7 +605,7 @@
                             </svg>
                         </button>
 
-                        <div class="form-status" id="formStatus"></div>
+                        <div class="form-status" id="formStatus" aria-live="polite"></div>
 
                         <p class="form-note">We typically respond within 2 business hours.</p>
                     </form>

@@ -4,28 +4,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // NAVBAR SCROLL EFFECT
     // ==========================================
     const navbar = document.getElementById('navbar');
-    let lastScroll = 0;
 
     window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
+        const currentScroll = window.scrollY;
 
         if (currentScroll > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-
-        lastScroll = currentScroll;
-    });
+    }, { passive: true });
 
     // ==========================================
-    // MOBILE MENU TOGGLE (hamburger)
+    // MOBILE MENU TOGGLE
     // ==========================================
-    // UI/UX FIXES:
-    // - Menu open hone par ab ek dark overlay dikhta hai (backdrop)
-    // - Background scroll lock ho jaata hai jab menu open ho
-    // - Overlay pe click ya ESC key se bhi menu close ho jaata hai
-    // - aria-expanded add kiya accessibility ke liye
     const mobileToggle = document.getElementById('mobileToggle');
     const navMenu = document.getElementById('navMenu');
     const navOverlay = document.getElementById('navOverlay');
@@ -54,25 +46,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Overlay pe click karke menu band karo
     navOverlay.addEventListener('click', closeMenu);
 
-    // ESC key se menu band karo
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && navMenu.classList.contains('active')) {
             closeMenu();
         }
     });
 
-    // Close mobile menu on link click
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', closeMenu);
+    });
+
+    // Close menu when resizing to desktop
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+            closeMenu();
+        }
     });
 
     // ==========================================
     // SCROLL REVEAL ANIMATIONS
     // ==========================================
     const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -89,7 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
         rootMargin: '0px 0px -50px 0px'
     });
 
-    revealElements.forEach(el => revealObserver.observe(el));
+    if (prefersReducedMotion.matches) {
+        revealElements.forEach(el => el.classList.add('visible'));
+    } else {
+        revealElements.forEach(el => revealObserver.observe(el));
+    }
 
     // ==========================================
     // ANIMATED COUNTERS
@@ -104,27 +105,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 statNumbers.forEach(stat => {
                     const target = parseInt(stat.dataset.target);
                     const duration = 2000;
-                    const step = target / (duration / 16);
-                    let current = 0;
+                    const startTime = performance.now();
 
-                    const updateCount = () => {
-                        current += step;
-                        if (current < target) {
-                            stat.textContent = Math.floor(current);
+                    const updateCount = (currentTime) => {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const easeOut = 1 - Math.pow(1 - progress, 4);
+                        stat.textContent = Math.floor(easeOut * target);
+
+                        if (progress < 1) {
                             requestAnimationFrame(updateCount);
                         } else {
                             stat.textContent = target;
                         }
                     };
 
-                    updateCount();
+                    requestAnimationFrame(updateCount);
                 });
             }
         });
     }, { threshold: 0.5 });
 
     const heroStats = document.querySelector('.hero-stats');
-    if (heroStats) countObserver.observe(heroStats);
+    if (heroStats) {
+        if (prefersReducedMotion.matches) {
+            statNumbers.forEach(stat => stat.textContent = stat.dataset.target);
+        } else {
+            countObserver.observe(heroStats);
+        }
+    }
 
     // ==========================================
     // CONTACT FORM HANDLING
@@ -144,7 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 message: document.getElementById('message').value
             };
 
-            // Loading state
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<span>Sending...</span>';
             submitBtn.disabled = true;
@@ -205,10 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
 
-            // BUG FIX: href="#" (jaise logo links) ke liye
-            // document.querySelector('#') invalid selector hai aur
-            // SyntaxError throw karta tha. Ab aise links ko simply
-            // ignore kar dete hain (default anchor behaviour chalega).
             if (!href || href === '#') {
                 return;
             }
@@ -217,10 +221,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = document.querySelector(href);
             if (target) {
                 const offset = 80;
-                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
                 window.scrollTo({
                     top: targetPosition,
-                    behavior: 'smooth'
+                    behavior: prefersReducedMotion.matches ? 'auto' : 'smooth'
                 });
             }
         });
@@ -230,16 +234,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // PARALLAX EFFECT FOR HERO ORBS
     // ==========================================
     const orbs = document.querySelectorAll('.gradient-orb');
+    let parallaxTicking = false;
 
     window.addEventListener('mousemove', (e) => {
-        const x = e.clientX / window.innerWidth;
-        const y = e.clientY / window.innerHeight;
+        if (parallaxTicking) return;
+        if (prefersReducedMotion.matches) return;
 
-        orbs.forEach((orb, index) => {
-            const speed = (index + 1) * 20;
-            const xOffset = (x - 0.5) * speed;
-            const yOffset = (y - 0.5) * speed;
-            orb.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+        parallaxTicking = true;
+        requestAnimationFrame(() => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 20;
+                const xOffset = (x - 0.5) * speed;
+                const yOffset = (y - 0.5) * speed;
+                orb.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            });
+
+            parallaxTicking = false;
         });
     });
 
@@ -254,8 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= sectionTop - 200) {
+            if (window.scrollY >= sectionTop - 200) {
                 current = section.getAttribute('id');
             }
         });
@@ -263,10 +275,8 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href') === `#${current}`) {
-                link.style.color = 'var(--accent)';
-            } else {
-                link.style.color = '';
+                link.classList.add('active');
             }
         });
-    });
+    }, { passive: true });
 });
