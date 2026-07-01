@@ -232,6 +232,10 @@ body.menu-open {
     position: absolute;
     inset: 0;
     overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    left: 0;
+    right: 0;
 }
 
 .gradient-orb {
@@ -240,6 +244,9 @@ body.menu-open {
     filter: blur(80px);
     opacity: 0.4;
     animation: float 20s infinite ease-in-out;
+    /* Orbs ko contain karo */
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .orb-1 {
@@ -249,6 +256,9 @@ body.menu-open {
     top: -200px;
     right: -100px;
     animation-delay: 0s;
+    /* Mobile me size kam karo */
+    max-width: 400px;
+    max-height: 400px;
 }
 
 .orb-2 {
@@ -258,6 +268,9 @@ body.menu-open {
     bottom: -150px;
     left: -100px;
     animation-delay: -5s;
+    /* Mobile me size kam karo */
+    max-width: 400px;
+    max-height: 400px;
 }
 
 .orb-3 {
@@ -269,6 +282,9 @@ body.menu-open {
     transform: translate(-50%, -50%);
     animation-delay: -10s;
     opacity: 0.2;
+    /* Mobile me size kam karo */
+    max-width: 300px;
+    max-height: 300px;
 }
 
 .grid-overlay {
@@ -1670,6 +1686,18 @@ body.menu-open {
 }
 
 @media (max-width: 768px) {
+    /* Gradient orbs ko chhota karo */
+    .orb-1,
+    .orb-2 {
+        max-width: 250px;
+        max-height: 250px;
+    }
+    
+    .orb-3 {
+        max-width: 200px;
+        max-height: 200px;
+    }
+    
     .mobile-toggle {
         display: flex;
     }
@@ -1800,9 +1828,14 @@ body.menu-open {
 
 /* Container ko bhi fix karo */
 .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
     overflow-x: hidden;
     width: 100%;
+    /* Container ko constrain karo */
     max-width: 100%;
+    box-sizing: border-box;
 }
 
 @media (max-width: 480px) {
