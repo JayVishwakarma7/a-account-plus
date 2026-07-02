@@ -91,7 +91,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "resend"        
 EMAIL_HOST_PASSWORD = os.getenv('RESEND_API_KEY')
 EMAIL_TIMEOUT = 30  # 30 seconds timeout
-EMAIL_USE_SSL = True
+EMAIL_USE_SSL = False
+RESEND_API_KEY = os.getenv('RESEND_API_KEY')
 
 DEFAULT_FROM_EMAIL = "Contact Form <onboarding@resend.dev>"
 CONTACT_RECEIVER_EMAIL = "jayvishwakarmahere@gmail.com"  

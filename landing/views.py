@@ -1,5 +1,7 @@
 import json
 import logging
+import resend
+
 
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
@@ -38,10 +40,6 @@ def handle_contact_submission(request):
             status=400,
         )
 
-    # BUG FIX: pehle raw dict data.get(...) se seedha DB me save ho raha tha,
-    # bina kisi validation ke (khaali/galat email bhi save ho jata).
-    # Ab ContactForm (jo forms.py me pehle se defined tha par kabhi use hi
-    # nahi ho raha tha) se validate karte hain.
     form = ContactForm(data)
     if not form.is_valid():
         return JsonResponse(
@@ -59,29 +57,35 @@ def handle_contact_submission(request):
         f"Message:\n{submission.message}"
     )
 
-    # BUG FIX: pehle send_mail fail hone par (e.g. galat SMTP credentials)
-    # poori request 500 error de deti thi, jabki form data DB me save ho
-    # chuka hota tha. Ab email fail hone par bhi user ko success hi dikhta
-    # hai (data safe hai), sirf error log ho jaata hai.
+    # Direct Resend API use karo (bina SMTP ke)
     try:
-        send_mail(
-            subject,
-            body,
-            settings.DEFAULT_FROM_EMAIL,
-            [settings.CONTACT_RECEIVER_EMAIL],
-            fail_silently=False,
-        )
-    except Exception:
-        logger.exception('Contact form email bhejne me error aaya (submission id=%s)', submission.id)
+        resend.api_key = settings.RESEND_API_KEY
+        
+        params = {
+            "from": "Contact Form <onboarding@resend.dev>",
+            "to": [settings.CONTACT_RECEIVER_EMAIL],
+            "subject": subject,
+            "html": f"""
+            <h2>New Contact Form Submission</h2>
+            <p><strong>Name:</strong> {submission.name}</p>
+            <p><strong>Email:</strong> {submission.email}</p>
+            <p><strong>Phone:</strong> {submission.phone}</p>
+            <p><strong>Message:</strong></p>
+            <p>{submission.message}</p>
+            """,
+        }
+        
+        email = resend.Emails.send(params)
+        logger.info(f'Email sent successfully via Resend: {email}')
+        
+    except Exception as e:
+        logger.exception(f'Contact form email bhejne me error aaya (submission id={submission.id}): {str(e)}')
 
     return JsonResponse({'status': 'success', 'message': 'Message sent successfully!'})
 
 
 @login_required
 def clientmail(request):
-    # BUG FIX: pehle yahan 'landing/403.html' render hota tha jo file exist
-    # hi nahi karti thi -> TemplateDoesNotExist error aata tha.
-    # PermissionDenied raise karne se Django ka standard 403 handling milta hai.
     if not request.user.is_staff:
         raise PermissionDenied
 
