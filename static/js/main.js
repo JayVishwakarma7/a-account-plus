@@ -255,6 +255,36 @@ document.addEventListener('DOMContentLoaded', () => {
             parallaxTicking = false;
         });
     });
+    // Review Form Handler
+const reviewForm = document.getElementById('reviewForm');
+if (reviewForm) {
+    reviewForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(reviewForm);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch('/submit-review/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                alert('Thank you for your review! It will be visible shortly.');
+                reviewForm.reset();
+                location.reload(); // Page reload to show new review
+            } else {
+                alert('Something went wrong. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    });
+}
 
     // ==========================================
     // ACTIVE NAV LINK ON SCROLL

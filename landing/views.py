@@ -1,7 +1,7 @@
 import json
 import logging
 import resend
-
+from .models import Review
 
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
@@ -19,10 +19,21 @@ logger = logging.getLogger(__name__)
 def index(request):
     if request.method == 'POST':
         return handle_contact_submission(request)
+    
+    reviews = Review.objects.all()[:6]
 
     # GET request - just show the page
     return render(request, 'landing/index.html')
 
+def submit_review(request):
+    if request.method == 'POST':
+        from .forms import ReviewForm
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return JsonResponse({'status': 'success', 'message': 'Review submitted!'})
+        return JsonResponse({'status': 'error', 'errors': form.errors}, status=400)
+    return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
 
 def handle_contact_submission(request):
     """Contact form ka JSON submission handle karta hai (validation ke saath)."""

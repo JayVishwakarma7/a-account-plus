@@ -1,3 +1,4 @@
+{% load custom_filters %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -316,6 +317,8 @@
         </div>
     </section>
 
+    
+
     <!-- Services -->
     <section class="services" id="services">
         <div class="container">
@@ -409,6 +412,53 @@
             </div>
         </div>
     </section>
+
+    <!-- Testimonials Section -->
+    <!-- Testimonials Section (Floating Reviews) -->
+<!--<section class="testimonials section-dark" id="testimonials">
+    <div class="container">
+        <div class="section-header reveal-up">
+            <span class="section-tag">Client Love</span>
+            <h2 class="section-title">What Petrol Pump Owners Say</h2>
+            <p class="section-desc">Don't just take our word for it. Here is what our clients think about our services.</p>
+        </div>
+
+        <div class="testimonials-grid">
+            {% for review in reviews %}
+            <div class="testimonial-card reveal-up">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                        {{ review.name|slice:":1"|upper }}
+                    </div>
+                    <div class="testimonial-info">
+                        <h4>{{ review.name }}</h4>
+                        <div class="testimonial-rating">
+                            {% for i in "12345" %}
+                                {% if forloop.counter <= review.rating %}
+                                    <span class="star filled">★</span>
+                                {% else %}
+                                    <span class="star">☆</span>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-message">
+                    <p>"{{ review.message }}"</p>
+                </div>
+                <div class="testimonial-date">
+                    {{ review.created_at|date:"F d, Y" }}
+                </div>
+            </div>
+            {% empty %}
+            <div class="no-reviews reveal-up">
+                <p>No reviews yet. Be the first to share your experience!</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>-->
+
 
     <!-- Pricing -->
     <section class="pricing section-dark" id="pricing">

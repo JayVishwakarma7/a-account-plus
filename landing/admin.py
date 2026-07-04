@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import ContactSubmission
+from .models import ContactSubmission, Review
 
 
 # BUG FIX: ContactSubmission model pehle admin me register hi nahi tha,
@@ -13,3 +13,9 @@ class ContactSubmissionAdmin(admin.ModelAdmin):
     search_fields = ('name', 'email', 'phone', 'message')
     readonly_fields = ('submitted_at',)
     ordering = ('-submitted_at',)
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ('name', 'rating', 'created_at')
+    list_filter = ('rating',)
+    search_fields = ('name',)

@@ -1885,6 +1885,96 @@ body.menu-open {
         left: 22px;
     }
 }
+/* Testimonials Grid */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+/* Testimonial Card */
+.testimonial-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    animation: float-card 6s ease-in-out infinite;
+}
+
+.testimonial-card:nth-child(2) { animation-delay: -2s; }
+.testimonial-card:nth-child(3) { animation-delay: -4s; }
+
+.testimonial-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(245, 158, 11, 0.4);
+    box-shadow: 0 20px 60px rgba(245, 158, 11, 0.15);
+}
+
+/* Testimonial Header */
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.testimonial-avatar {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: white;
+    flex-shrink: 0;
+}
+
+.testimonial-info h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.testimonial-rating { display: flex; gap: 4px; }
+.testimonial-rating .star { color: var(--text-dim); font-size: 1rem; }
+.testimonial-rating .star.filled { color: var(--accent); }
+
+/* Testimonial Message */
+.testimonial-message { margin-bottom: 20px; }
+.testimonial-message p {
+    color: var(--text-muted);
+    line-height: 1.8;
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+/* Testimonial Date */
+.testimonial-date {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+.no-reviews { text-align: center; padding: 60px 20px; color: var(--text-muted); }
+
+@keyframes float-card {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@media (max-width: 768px) {
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .testimonial-card { animation: none; }
+}
 
 /* ============================================
    REDUCED MOTION
